@@ -59138,10 +59138,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
+    created: function created() {
+        this.fetchIt();
+    },
 
-    //       created() {
-    //       this.fetchIt();
-    // },
 
     methods: {
 
@@ -59154,31 +59154,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         //     });
         // },
 
-        // fetchIt() {
-        //       axios.get('api/tasks').then((res) => {
-        //           this.list = res.data;
-        //           console.log('Fired');
-        //
-        //       });
-        //   },
-
-        addIt: function addIt() {
+        fetchIt: function fetchIt() {
             var _this = this;
 
+            axios.get('api/tasks').then(function (res) {
+                _this.list = res.data;
+                console.log('Fired');
+            });
+        },
+        addIt: function addIt() {
+            var _this2 = this;
+
             axios.post('api/tasks', this.task).then(function (res) {
-                _this.task.party = '';
-                _this.task.size = '';
-                _this.task.phone = '';
-                _this.fetchIt();
+                _this2.task.party = '';
+                _this2.task.size = '';
+                _this2.task.phone = '';
+                _this2.fetchIt();
             }).catch(function (err) {
                 return console.error(err);
             });
         },
         deleteIt: function deleteIt(id) {
-            var _this2 = this;
+            var _this3 = this;
 
             axios.delete('api/tasks/' + id).then(function (res) {
-                _this2.fetchIt();
+                _this3.fetchIt();
             }).catch(function (err) {
                 return console.error(err);
             });
@@ -59186,13 +59186,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     computed: {
         searchIt: function searchIt() {
-            var _this3 = this;
+            var _this4 = this;
 
-            axios.get('api/tasks').then(function (res) {
-                var players = _this3.data.filter(function (res) {
-                    return res.party.toLowerCase().includes(_this3.search.toLowerCase());
-                    console.log(res);
-                });
+            return this.list.filter(function (task) {
+                return task.party.match(_this4.search);
             });
         }
     }
@@ -59403,7 +59400,7 @@ var render = function() {
               _vm._l(_vm.searchIt, function(task, index) {
                 return _c(
                   "span",
-                  { staticClass: "list-group-item item-list" },
+                  { key: task, staticClass: "list-group-item item-list" },
                   [
                     _c(
                       "button",

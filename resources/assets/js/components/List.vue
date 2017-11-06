@@ -53,7 +53,7 @@
   <div class="row marg">
     <div class="col-md-12">
       <transition-group name="list" tag="div">
-               <span class="list-group-item item-list" v-for="(task, index) in searchIt"> <!--Or use with computed prop v-for="task in searchIt" -->
+               <span class="list-group-item item-list" v-for="(task, index) in searchIt" :key='task'> <!--Or use with computed prop v-for="task in searchIt" -->
 
                   <button type="button" class="close" aria-label="Close">
                     <span aria-hidden="true" @click="deleteIt(task.id)">&times;</span>
@@ -89,9 +89,9 @@
                 }
             };
           },
-      //       created() {
-      //       this.fetchIt();
-      // },
+            created() {
+            this.fetchIt();
+      },
 
         methods: {
 
@@ -104,13 +104,13 @@
         //     });
         // },
 
-          // fetchIt() {
-          //       axios.get('api/tasks').then((res) => {
-          //           this.list = res.data;
-          //           console.log('Fired');
-          //
-          //       });
-          //   },
+          fetchIt() {
+                axios.get('api/tasks').then((res) => {
+                    this.list = res.data;
+                    console.log('Fired');
+
+                });
+            },
 
             addIt() {
                 axios.post('api/tasks', this.task)
@@ -133,13 +133,10 @@
 
         },
       computed: {
-        searchIt() {
-          axios.get('api/tasks').then((res) => {
-              var players = this.data.filter((res) => {
-              return res.party.toLowerCase().includes(this.search.toLowerCase());
-              console.log(res);
+        searchIt: function() {
+              return this.list.filter((task) => {
+              return task.party.match(this.search);
             });
-          });
         }
       }
     }
