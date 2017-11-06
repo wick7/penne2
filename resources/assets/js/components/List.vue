@@ -1,7 +1,7 @@
 <template>
   <div>
 <div  class="container main">
-  <form action="#" @submit.prevent="addIt()"  >
+  <form action="#" @submit.prevent="addIt()">
     <div class="row">
       <div class="col-md-12 col-xs-12">
                 <label for="party" class="col-2 col-form-label">Party Name:</label>
@@ -46,14 +46,14 @@
   </form>
   <div class="row marg">
     <div class="col-md-12">
-      <input class="form-control" type="search" v-model="temp" >
+      <input class="form-control" type="search" v-model="search">
       <button type="submit"  class="btn btn-primary">Search</button>
     </div>
   </div>
   <div class="row marg">
     <div class="col-md-12">
       <transition-group name="list" tag="div">
-               <span class="list-group-item item-list" v-for="(task, index) in list" :key="index"> <!--Or use with computed prop v-for="task in searchIt" -->
+               <span class="list-group-item item-list" v-for="(task, index) in searchIt"> <!--Or use with computed prop v-for="task in searchIt" -->
 
                   <button type="button" class="close" aria-label="Close">
                     <span aria-hidden="true" @click="deleteIt(task.id)">&times;</span>
@@ -79,29 +79,38 @@
 
         data() {
             return {
-                temp: '',
+                search: '',
                 list: [],
                 task: {
                     party: '',
                     size: '',
                     phone: '',
-                    created_at:0 ,
+                    created_at: 0,
                 }
             };
           },
-            created() {
-            this.fetchIt();
-      },
-
+      //       created() {
+      //       this.fetchIt();
+      // },
 
         methods: {
 
+        //   searchIt() {
+        //     axios.get('api/tasks').then((res) => {
+        //       for (var i of res.data) {
+        //         var players = i;
+        //         console.log(players);
+        //       }
+        //     });
+        // },
 
-          fetchIt() {
-                axios.get('api/tasks').then((res) => {
-                    this.list = res.data;
-                });
-            },
+          // fetchIt() {
+          //       axios.get('api/tasks').then((res) => {
+          //           this.list = res.data;
+          //           console.log('Fired');
+          //
+          //       });
+          //   },
 
             addIt() {
                 axios.post('api/tasks', this.task)
@@ -123,19 +132,82 @@
             },
 
         },
-
-      // computed: {
-      //   searchIt: function(){
-      //       return this.task.filter((task) => {
-      //       return tasker.party.match(this.temp);
-      //    });
-      //   }
-      // }
+      computed: {
+        searchIt() {
+          axios.get('api/tasks').then((res) => {
+              var players = this.data.filter((res) => {
+              return res.party.toLowerCase().includes(this.search.toLowerCase());
+              console.log(res);
+            });
+          });
+        }
+      }
     }
+
 </script>
 
 
 
+<!-- // for (var i of res.data) {
+//   var players = i;
+//   console.log(i);
+// });
+
+// return this.task.filter((task) => {
+// return task.party.match(this.temp);
+// } -->
+
+<!-- searchIt() {
+  axios.get('api/tasks').then((res) => {
+    for (var i of res.data) {
+      var players = i;
+      console.log(players);
+    }
+  });
+}, -->
+
+
+
+<!-- searchIt() {
+  axios.get('api/tasks').then((res) => {
+    for (var i of res.data) {
+      if (i.party.toLowerCase() == this.search.toLowerCase()) {
+        console.log('Match');
+        this.search = '';
+      } else {
+        console.log('No Match. Or it didnt work');
+        this.search = '';
+      }
+    }
+  }); -->
+
+<!-- searchIt() {
+  axios.get('api/tasks').then((res) => {
+    let len = res.data.length;
+    for (var i of res.data) {
+      console.log(i.party);
+    }
+  });
+}, -->
+
+<!-- if (res.task.party == this.search) {
+  console.log('Match');
+  this.search = '';
+} else {
+  console.log('No Match');
+  this.search = '';
+} -->
+
+
+
+<!-- computed: {
+  searchIt: function() {
+    axios.get('api/tasks').then((res) => {
+      this.list = res.data;
+  });
+      return this.task.filter((task) => {
+      return tasker.party.match(this.temp);
+   }); -->
 
 
 <!-- searchIt: function() {

@@ -59128,7 +59128,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            temp: '',
+            search: '',
             list: [],
             task: {
                 party: '',
@@ -59138,49 +59138,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             }
         };
     },
-    created: function created() {
-        this.fetchIt();
-    },
 
+    //       created() {
+    //       this.fetchIt();
+    // },
 
     methods: {
-        fetchIt: function fetchIt() {
+
+        //   searchIt() {
+        //     axios.get('api/tasks').then((res) => {
+        //       for (var i of res.data) {
+        //         var players = i;
+        //         console.log(players);
+        //       }
+        //     });
+        // },
+
+        // fetchIt() {
+        //       axios.get('api/tasks').then((res) => {
+        //           this.list = res.data;
+        //           console.log('Fired');
+        //
+        //       });
+        //   },
+
+        addIt: function addIt() {
             var _this = this;
 
-            axios.get('api/tasks').then(function (res) {
-                _this.list = res.data;
-            });
-        },
-        addIt: function addIt() {
-            var _this2 = this;
-
             axios.post('api/tasks', this.task).then(function (res) {
-                _this2.task.party = '';
-                _this2.task.size = '';
-                _this2.task.phone = '';
-                _this2.fetchIt();
+                _this.task.party = '';
+                _this.task.size = '';
+                _this.task.phone = '';
+                _this.fetchIt();
             }).catch(function (err) {
                 return console.error(err);
             });
         },
         deleteIt: function deleteIt(id) {
-            var _this3 = this;
+            var _this2 = this;
 
             axios.delete('api/tasks/' + id).then(function (res) {
-                _this3.fetchIt();
+                _this2.fetchIt();
             }).catch(function (err) {
                 return console.error(err);
             });
         }
-    }
+    },
+    computed: {
+        searchIt: function searchIt() {
+            var _this3 = this;
 
-    // computed: {
-    //   searchIt: function(){
-    //       return this.task.filter((task) => {
-    //       return tasker.party.match(this.temp);
-    //    });
-    //   }
-    // }
+            axios.get('api/tasks').then(function (res) {
+                var players = _this3.data.filter(function (res) {
+                    return res.party.toLowerCase().includes(_this3.search.toLowerCase());
+                    console.log(res);
+                });
+            });
+        }
+    }
 });
 
 /***/ }),
@@ -59352,19 +59367,19 @@ var render = function() {
               {
                 name: "model",
                 rawName: "v-model",
-                value: _vm.temp,
-                expression: "temp"
+                value: _vm.search,
+                expression: "search"
               }
             ],
             staticClass: "form-control",
             attrs: { type: "search" },
-            domProps: { value: _vm.temp },
+            domProps: { value: _vm.search },
             on: {
               input: function($event) {
                 if ($event.target.composing) {
                   return
                 }
-                _vm.temp = $event.target.value
+                _vm.search = $event.target.value
               }
             }
           }),
@@ -59385,10 +59400,10 @@ var render = function() {
             _c(
               "transition-group",
               { attrs: { name: "list", tag: "div" } },
-              _vm._l(_vm.list, function(task, index) {
+              _vm._l(_vm.searchIt, function(task, index) {
                 return _c(
                   "span",
-                  { key: index, staticClass: "list-group-item item-list" },
+                  { staticClass: "list-group-item item-list" },
                   [
                     _c(
                       "button",
