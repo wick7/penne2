@@ -59189,7 +59189,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this4 = this;
 
             return this.list.filter(function (task) {
-                return task.party.match(_this4.search);
+                return task.party.toLowerCase().match(_this4.search.toLowerCase());
             });
         }
     }

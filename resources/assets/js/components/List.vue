@@ -135,7 +135,7 @@
       computed: {
         searchIt: function() {
               return this.list.filter((task) => {
-              return task.party.match(this.search);
+              return task.party.toLowerCase().match(this.search.toLowerCase());
             });
         }
       }
