@@ -24,6 +24,6 @@ php artisan migrate
 
 ## Authors
 
-* **Craig Wickersham** 
+* **Craig W** 
 
 
