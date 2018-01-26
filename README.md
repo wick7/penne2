@@ -2,14 +2,18 @@
 
 Wait list for a fictitious restaurant complete with name searching capabilities.  
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
 ### Set-Up
+
+After cloning....
 
 ```
 npm install
+```
+
+Add .env file and set database name. 
+
+```
+php artisan migrate
 ```
 
 ## Built With
