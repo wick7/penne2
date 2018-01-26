@@ -59204,290 +59204,301 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "container main" }, [
-      _c(
-        "form",
-        {
-          attrs: { action: "#" },
-          on: {
-            submit: function($event) {
-              $event.preventDefault()
-              _vm.addIt()
+    _c(
+      "div",
+      {
+        staticClass: "container main",
+        staticStyle: { "margin-bottom": "15em" }
+      },
+      [
+        _c(
+          "form",
+          {
+            attrs: { action: "#" },
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                _vm.addIt()
+              }
             }
-          }
-        },
-        [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12 col-xs-12" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-2 col-form-label",
-                  attrs: { for: "party" }
-                },
-                [_vm._v("Party Name:")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
+          },
+          [
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                _c(
+                  "label",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.task.party,
-                    expression: "task.party"
-                  }
-                ],
-                staticClass: "form-control",
-                staticStyle: { "text-transform": "capitalize" },
-                attrs: {
-                  type: "text",
-                  placeholder: "Enter Party Name",
-                  autofocus: ""
-                },
-                domProps: { value: _vm.task.party },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.task, "party", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12 col-xs-12" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
+                    staticClass: "col-2 col-form-label",
+                    attrs: { for: "party" }
+                  },
+                  [_vm._v("Party Name:")]
+                ),
+                _vm._v(" "),
+                _c("input", {
                   directives: [
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.task.size,
-                      expression: "task.size"
+                      value: _vm.task.party,
+                      expression: "task.party"
                     }
                   ],
                   staticClass: "form-control",
+                  staticStyle: { "text-transform": "capitalize" },
+                  attrs: {
+                    type: "text",
+                    placeholder: "Enter Party Name",
+                    autofocus: ""
+                  },
+                  domProps: { value: _vm.task.party },
                   on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.task,
-                        "size",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.task, "party", $event.target.value)
                     }
                   }
-                },
-                [
-                  _c("option", [_vm._v("1")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("2")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("3")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("4")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("5")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("6")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("7")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("8")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("9")]),
-                  _vm._v(" "),
-                  _c("option", [_vm._v("10+")])
-                ]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-md-12" }, [
-              _c(
-                "label",
-                {
-                  staticClass: "col-2 col-form-label",
-                  attrs: { for: "input" }
-                },
-                [_vm._v("Phone Number: ")]
-              ),
-              _vm._v(" "),
-              _c("input", {
-                directives: [
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12 col-xs-12" }, [
+                _vm._m(0),
+                _vm._v(" "),
+                _c(
+                  "select",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.task.phone,
-                    expression: "task.phone"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "tel" },
-                domProps: { value: _vm.task.phone },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(_vm.task, "phone", $event.target.value)
-                  }
-                }
-              })
-            ])
-          ]),
-          _vm._v(" "),
-          _vm._m(1)
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "row marg" }, [
-        _c("div", { staticClass: "col-md-12" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.search,
-                expression: "search"
-              }
-            ],
-            staticClass: "form-control",
-            attrs: { type: "search" },
-            domProps: { value: _vm.search },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.search = $event.target.value
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn btn-primary", attrs: { type: "submit" } },
-            [_vm._v("Search")]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row marg" }, [
-        _c(
-          "div",
-          { staticClass: "col-md-12" },
-          [
-            _c(
-              "transition-group",
-              { attrs: { name: "list", tag: "div" } },
-              _vm._l(_vm.searchIt, function(task, index) {
-                return _c(
-                  "span",
-                  { key: task, staticClass: "list-group-item item-list" },
-                  [
-                    _c(
-                      "button",
+                    directives: [
                       {
-                        staticClass: "close",
-                        attrs: { type: "button", "aria-label": "Close" }
-                      },
-                      [
-                        _c(
-                          "span",
-                          {
-                            attrs: { "aria-hidden": "true" },
-                            on: {
-                              click: function($event) {
-                                _vm.deleteIt(task.id)
-                              }
-                            }
-                          },
-                          [_vm._v("×")]
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.task.size,
+                        expression: "task.size"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.task,
+                          "size",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
                         )
-                      ]
-                    ),
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [_vm._v("1")]),
                     _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-form-label",
-                        attrs: { for: "input" }
-                      },
-                      [
-                        _c("span", [_vm._v("Name:")]),
-                        _vm._v(" " + _vm._s(task.party))
-                      ]
-                    ),
+                    _c("option", [_vm._v("2")]),
                     _vm._v(" "),
-                    _c("br"),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-form-label",
-                        attrs: { for: "input" }
-                      },
-                      [_vm._v("Phone: " + _vm._s(task.phone))]
-                    ),
+                    _c("option", [_vm._v("3")]),
                     _vm._v(" "),
-                    _c("br"),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-form-label",
-                        attrs: { for: "input" }
-                      },
-                      [
-                        _vm._v("Size: "),
-                        _c("span", { staticClass: "badge" }, [
-                          _vm._v(_vm._s(task.size))
-                        ])
-                      ]
-                    ),
+                    _c("option", [_vm._v("4")]),
                     _vm._v(" "),
-                    _c("br"),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "col-form-label",
-                        attrs: { for: "input" }
-                      },
-                      [
-                        _vm._v("Since: "),
-                        _c("span", { staticClass: "badge" }, [
-                          _vm._v(
-                            _vm._s(
-                              _vm._f("moment")(task.created_at, "from", "now")
-                            )
-                          )
-                        ])
-                      ]
-                    )
+                    _c("option", [_vm._v("5")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("6")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("7")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("8")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("9")]),
+                    _vm._v(" "),
+                    _c("option", [_vm._v("10+")])
                   ]
                 )
-              })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "col-2 col-form-label",
+                    attrs: { for: "input" }
+                  },
+                  [_vm._v("Phone Number: ")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.task.phone,
+                      expression: "task.phone"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "tel" },
+                  domProps: { value: _vm.task.phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.task, "phone", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ]
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row marg" }, [
+          _c("div", { staticClass: "col-md-12" }, [
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.search,
+                  expression: "search"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { type: "search" },
+              domProps: { value: _vm.search },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.search = $event.target.value
+                }
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-primary",
+                staticStyle: { "margin-top": "2em" },
+                attrs: { type: "submit" }
+              },
+              [_vm._v("Search")]
             )
-          ],
-          1
-        )
-      ])
-    ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "row marg" }, [
+          _c(
+            "div",
+            { staticClass: "col-md-12" },
+            [
+              _c(
+                "transition-group",
+                { attrs: { name: "list", tag: "div" } },
+                _vm._l(_vm.searchIt, function(task, index) {
+                  return _c(
+                    "span",
+                    { key: task, staticClass: "list-group-item item-list" },
+                    [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "close",
+                          attrs: { type: "button", "aria-label": "Close" }
+                        },
+                        [
+                          _c(
+                            "span",
+                            {
+                              attrs: { "aria-hidden": "true" },
+                              on: {
+                                click: function($event) {
+                                  _vm.deleteIt(task.id)
+                                }
+                              }
+                            },
+                            [_vm._v("×")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "input" }
+                        },
+                        [
+                          _c("span", [_vm._v("Name:")]),
+                          _vm._v(" " + _vm._s(task.party))
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "input" }
+                        },
+                        [_vm._v("Phone: " + _vm._s(task.phone))]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "input" }
+                        },
+                        [
+                          _vm._v("Size: "),
+                          _c("span", { staticClass: "badge" }, [
+                            _vm._v(_vm._s(task.size))
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c(
+                        "label",
+                        {
+                          staticClass: "col-form-label",
+                          attrs: { for: "input" }
+                        },
+                        [
+                          _vm._v("Since: "),
+                          _c("span", { staticClass: "badge" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm._f("moment")(task.created_at, "from", "now")
+                              )
+                            )
+                          ])
+                        ]
+                      )
+                    ]
+                  )
+                })
+              )
+            ],
+            1
+          )
+        ])
+      ]
+    )
   ])
 }
 var staticRenderFns = [

@@ -1,6 +1,6 @@
 <template>
   <div>
-<div  class="container main">
+<div  class="container main" style="margin-bottom: 15em;">
   <form action="#" @submit.prevent="addIt()">
     <div class="row">
       <div class="col-md-12 col-xs-12">
@@ -47,7 +47,7 @@
   <div class="row marg">
     <div class="col-md-12">
       <input class="form-control" type="search" v-model="search">
-      <button type="submit"  class="btn btn-primary">Search</button>
+      <button type="submit" style="margin-top: 2em;" class="btn btn-primary">Search</button>
     </div>
   </div>
   <div class="row marg">
